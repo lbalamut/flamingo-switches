@@ -9,7 +9,25 @@
 #ifndef FLAMINGO_SWITCH_H
 #define FLAMINGO_SWITCH_H
 
-#include "Arduino.h"
+#if defined(ARDUINO) && ARDUINO >= 100
+    #include "Arduino.h"
+#else
+    #include <wiringPi.h>
+    #include <stdint.h>
+    #define NULL 0
+    #define CHANGE 1
+#ifdef __cplusplus
+extern "C"{
+#endif
+typedef uint8_t boolean;
+typedef uint8_t byte;
+
+#if !defined(NULL)
+#endif
+#ifdef __cplusplus
+}
+#endif
+#endif
 
 // Number of maximum High/Low changes per packet.
 // We can handle up to (unsigned long) => 32 bit * 2 H/L changes per bit + 2 for sync + timing[0]
