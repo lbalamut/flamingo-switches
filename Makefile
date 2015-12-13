@@ -1,6 +1,6 @@
 all: send
 
-send: send.o
+send: FlamingoSwitch.o send.o
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi
 
 clean:
