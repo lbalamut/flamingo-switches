@@ -139,13 +139,14 @@ void FlamingoSwitch::enableReceive()
 	{
 		FlamingoSwitch::nReceivedValue = NULL;
 		FlamingoSwitch::nReceivedBitlength = NULL;
-		attachInterrupt(this->nReceiverInterrupt, handleInterrupt, CHANGE);
+//		attachInterrupt(this->nReceiverInterrupt, handleInterrupt, CHANGE);
+    wiringPiISR(this->nReceiverInterrupt, INT_EDGE_BOTH, &handleInterrupt);
 	}
 }
 
 void FlamingoSwitch::disableReceive()
 {
-	detachInterrupt(this->nReceiverInterrupt);
+//	detachInterrupt(this->nReceiverInterrupt);
 	this->nReceiverInterrupt = -1;
 }
 
