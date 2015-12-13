@@ -10,17 +10,6 @@ Command is 0 for OFF and 1 for ON
 #include <stdlib.h>
 #include <stdio.h>
 
-
-
-void send(int device, int command)
-{
-    Serial.print("Sending device: ");
-    Serial.print(device);
-    Serial.print(" command: ");
-    Serial.println(command);
-
-}
-
 int main(int argc, char *argv[]) {
 
     /*
@@ -34,7 +23,7 @@ int main(int argc, char *argv[]) {
 
     if (wiringPiSetup () == -1) return 1;
 
-    printf("Sending device[%i] command[%i]\n", unitCode, command);
+    printf("Sending device[%i] command[%i]\n", device, command);
 
     FlamingoSwitch aSwitch = FlamingoSwitch();
     aSwitch.enableTransmit(PIN);
